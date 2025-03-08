@@ -128,6 +128,27 @@
     });
   });
 
+  document.addEventListener("DOMContentLoaded", function () {
+    let scenes = document.querySelectorAll(".scene");
+
+    function checkVisibility() {
+        let triggerBottom = window.innerHeight * 0.8;
+
+        scenes.forEach(scene => {
+            let sceneTop = scene.getBoundingClientRect().top;
+            if (sceneTop < triggerBottom) {
+                scene.classList.add("visible");
+            } else {
+                scene.classList.remove("visible");
+            }
+        });
+    }
+
+    window.addEventListener("scroll", checkVisibility);
+    checkVisibility(); // Menjalankan saat pertama kali dimuat
+});
+
+
   /**
    * Initiate Pure Counter
    */
