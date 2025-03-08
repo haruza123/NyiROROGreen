@@ -127,25 +127,84 @@
       }
     });
   });
-
   document.addEventListener("DOMContentLoaded", function () {
-    let scenes = document.querySelectorAll(".scene");
+    let stories = document.querySelectorAll(".story");
+    let currentIndex = 0;
+    let storyContainer = document.querySelector(".story-container");
+    let storyActive = false;
+    let isScrolling = false;
 
-    function checkVisibility() {
-        let triggerBottom = window.innerHeight * 0.8;
-
-        scenes.forEach(scene => {
-            let sceneTop = scene.getBoundingClientRect().top;
-            if (sceneTop < triggerBottom) {
-                scene.classList.add("visible");
+    function showStory(index) {
+        stories.forEach((story, i) => {
+            if (i === index) {
+                story.classList.add("active");
+                story.classList.remove("exit");
+            } else if (i < index) {
+                story.classList.add("exit"); // Flip out ke kanan
+                story.classList.remove("active");
             } else {
-                scene.classList.remove("visible");
+                story.classList.remove("active", "exit");
             }
         });
     }
 
-    window.addEventListener("scroll", checkVisibility);
-    checkVisibility(); // Menjalankan saat pertama kali dimuat
+    function nextStory() {
+        if (!isScrolling && currentIndex < stories.length - 1) {
+            isScrolling = true;
+            currentIndex++;
+            showStory(currentIndex);
+            setTimeout(() => isScrolling = false, 1000);
+        } else if (currentIndex === stories.length - 1) {
+            enableScroll();
+        }
+    }
+
+    function prevStory() {
+        if (!isScrolling && currentIndex > 0) {
+            isScrolling = true;
+            currentIndex--;
+            showStory(currentIndex);
+            setTimeout(() => isScrolling = false, 1000);
+        } else if (currentIndex === 0) {
+            enableScroll();
+        }
+    }
+
+    function disableScroll() {
+        document.body.style.overflow = "hidden";
+    }
+
+    function enableScroll() {
+        document.body.style.overflow = "auto";
+        storyActive = false;
+    }
+
+    function disableScrollAgain() {
+        document.body.style.overflow = "hidden";
+        storyActive = true;
+    }
+
+    let observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                storyActive = true;
+                disableScrollAgain();
+                showStory(currentIndex);
+            }
+        });
+    }, { threshold: 0.7 });
+
+    observer.observe(storyContainer);
+
+    window.addEventListener("wheel", function (event) {
+        if (storyActive) {
+            if (event.deltaY > 0) {
+                nextStory();
+            } else {
+                prevStory();
+            }
+        }
+    });
 });
 
 
