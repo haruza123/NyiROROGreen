@@ -127,6 +127,8 @@
       }
     });
   });
+
+  /*Story animation */
   document.addEventListener("DOMContentLoaded", function () {
     let stories = document.querySelectorAll(".story");
     let currentIndex = 0;
@@ -192,7 +194,7 @@
                 showStory(currentIndex);
             }
         });
-    }, { threshold: 0.7 });
+    }, { threshold: 0.8 });
 
     observer.observe(storyContainer);
 

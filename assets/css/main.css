@@ -956,7 +956,7 @@ section,
   }
 }
 
-/* 🌊 Story Container dengan Perspektif 3D */
+/*Story*/
 .story-container {
   width: 100vw;
   height: 100vh;
@@ -966,10 +966,9 @@ section,
   justify-content: center;
   overflow: hidden;
   position: relative;
-  perspective: 2000px; /* Penting untuk efek 3D */
+  perspective: 2000px; 
 }
 
-/* 📖 Story Cards */
 .story {
   width: 70%;
   height: 80vh;
@@ -985,24 +984,46 @@ section,
   top: 50%;
   left: 50%;
   transform-style: preserve-3d;
-  transform: translate(-50%, -50%) rotateY(-120deg); /* Mulai dari tertutup */
+  transform: translate(-50%, -50%) rotateY(-120deg);
   opacity: 0;
-  transform-origin: left; /* Efek seperti buku dibuka dari sisi kiri */
+  transform-origin: right; 
 }
 
-/* 🌅 Gambar Story */
 .story img {
-  width: 40%;
+  flex: 1;
+  width: 50%;
   border-radius: 15px;
 }
 
-/* 📖 Teks Story */
+.story.active img {
+  transform: scale(1.05);
+}
+
+.story video {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  flex: 1;
+  max-width: 60%;
+  height: auto;
+  border-radius: 15px; 
+  object-fit: cover; 
+}
+
+.story.active video {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.story .text {
+  flex: 1; 
+}
+
 .text {
   width: 50%;
   text-align: left;
 }
 
-/* 📖 Efek Flip Masuk (Buka Halaman dari Kiri) */
 @keyframes flipInLeft {
   0% {
       transform: translate(-50%, -50%) rotateY(-120deg);
@@ -1014,7 +1035,6 @@ section,
   }
 }
 
-/* 📖 Efek Flip Keluar (Tutup Halaman ke Kanan) */
 @keyframes flipOutRight {
   0% {
       transform: translate(-50%, -50%) rotateY(0);
@@ -1026,12 +1046,10 @@ section,
   }
 }
 
-/* 🌟 Efek ketika Story aktif */
 .story.active {
   animation: flipInLeft 0.8s ease-out forwards;
 }
 
-/* 🌟 Efek ketika Story keluar */
 .story.exit {
   animation: flipOutRight 0.8s ease-in forwards;
 }
