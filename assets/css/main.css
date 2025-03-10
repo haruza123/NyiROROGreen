@@ -1054,6 +1054,270 @@ section,
   animation: flipOutRight 0.8s ease-in forwards;
 }
 
+/* Untuk Tablet (lebar max 1024px) */
+@media screen and (max-width: 1024px) {
+  .story-container {
+    height: auto;
+    padding: 5rem 2rem;
+  }
+
+  .story {
+    width: 90%;
+    height: auto;
+    flex-direction: column;
+    padding: 30px;
+    gap: 20px;
+    transform: none;
+    position: static;
+    opacity: 1;
+  }
+
+  .story img, .story video {
+    width: 100%;
+    max-width: 90%;
+  }
+
+  .story .text {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* Untuk Handphone (lebar max 768px) */
+@media screen and (max-width: 768px) {
+  .story-container {
+    padding: 3rem 1rem;
+  }
+
+  .story {
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    padding: 20px;
+    gap: 15px;
+    box-shadow: none; /* Hilangkan shadow agar lebih clean */
+    background: rgba(255, 255, 255, 0.9);
+    display: flex; /* Pastikan elemen tidak tersembunyi */
+  }
+
+  .story video {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .story .text {
+    width: 100%;
+    text-align: center;
+    font-size: 1rem;
+  }
+
+  .story.active {
+    display: flex;
+  }
+}
+
+
+/*--------------------------------------------------------------
+# Yogyakarta
+--------------------------------------------------------------*/
+/* Tata letak utama */
+#yogyakarta-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5rem 10%;
+  gap: 2rem;
+}
+
+/* Container teks */
+.text-container {
+  flex: 1;
+  max-width: 50%;
+}
+
+.text-container h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.text-container h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.text-container ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.text-container li {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Container gambar */
+.image-container {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 600px; /* Sesuaikan dengan ukuran layar */
+}
+
+
+.slider-container {
+  position: relative;
+  width: 500px;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.slider-container img {
+  position: relative;
+  z-index: 2;
+}
+
+
+.slider-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.slider-wrapper img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.after {
+  clip-path: inset(0 50% 0 0);
+}
+
+.slider-bar {
+  position: absolute;
+  width: 5px;
+  height: 100%;
+  background: #ffcc00;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+}
+
+.slider {
+  opacity: 10;
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.slider::-webkit-slider-thumb, .slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: #ffcc00;
+  border-radius: 50%;
+  cursor: grab;
+}
+
+/* RESPONSIF: Untuk Tablet (Lebar max 1024px) */
+@media screen and (max-width: 1024px) {
+  #yogyakarta-info {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 4rem 5%;
+  }
+
+  .text-container {
+    max-width: 90%;
+  }
+
+  .image-container {
+    max-width: 90%;
+  }
+
+  .slider-container {
+    width: 80%;
+    height: auto;
+    max-width: 400px;
+  }
+}
+
+/* RESPONSIF: Untuk layar ≤ 1023px (Teks di kiri, gambar tetap muncul di bawah) */
+/* Untuk layar besar (Desktop) */
+@media screen and (min-width: 1024px) {
+  #yogyakarta-info {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      text-align: left;
+      padding: 5rem 10%;
+  }
+
+  .text-container {
+      flex: 1;
+      max-width: 50%;
+      text-align: left;
+  }
+
+  .image-container {
+      flex: 1;
+      max-width: 50%;
+      display: flex;
+      justify-content: center;
+  }
+
+  .slider-container {
+      width: 100%;
+      max-width: 500px;
+  }
+}
+
+/* Untuk layar kecil (Tablet & Mobile) */
+@media screen and (max-width: 1023px) {
+  #yogyakarta-info {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 3rem 5%;
+  }
+
+  .text-container {
+      order: 1;
+      max-width: 90%;
+  }
+
+  .image-container {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+    min-height: 300px;
+}
+
+  .slider-container {
+      width: 90%;
+      max-width: 450px;
+  }
+  .slider-wrapper img {
+    display: block; /* Pastikan gambar tampil */
+    width: 100%;
+    height: auto;
+}
+}
+
 
 /*--------------------------------------------------------------
 # Featured Services Section

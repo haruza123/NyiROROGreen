@@ -207,7 +207,31 @@
             }
         }
     });
+
+    
 });
+
+
+
+/**Slider */
+document.addEventListener("DOMContentLoaded", function () {
+  const slider = document.querySelector(".slider");
+  const afterImage = document.querySelector(".after");
+  const sliderBar = document.querySelector(".slider-bar");
+
+  if (slider && afterImage && sliderBar) {
+      slider.value = 100; // Set awal ke kanan (100%)
+      afterImage.style.clipPath = `inset(0 0 0 0)`;
+      sliderBar.style.left = `100%`;
+
+      slider.addEventListener("input", function () {
+          let sliderValue = slider.value;
+          afterImage.style.clipPath = `inset(0 ${100 - sliderValue}% 0 0)`;
+          sliderBar.style.left = `${sliderValue}%`;
+      });
+  } 
+});
+
 
 
   /**
