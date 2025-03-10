@@ -12,13 +12,15 @@
 --------------------------------------------------------------*/
 /* Fonts */
 :root {
-  --default-font: "Roboto",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --heading-font: "Montserrat",  sans-serif;
-  --nav-font: "Open Sans",  sans-serif;
+  --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --heading-font: "Montserrat", sans-serif;
+  --nav-font: "Open Sans", sans-serif;
 }
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
-:root { 
+:root {
   --background-color: #ffffff; /* Background color for the entire website, including individual sections */
   --default-color: #444444; /* Default color used for the majority of the text content across the entire website */
   --heading-color: #222222; /* Color for headings, subheadings and title throughout the website */
@@ -29,7 +31,7 @@
 
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
 :root {
-  --nav-color: #222222;  /* The default color of the main navmenu links */
+  --nav-color: #222222; /* The default color of the main navmenu links */
   --nav-hover-color: #106eea; /* Applied to main navmenu links when they are hovered over or active */
   --nav-mobile-background-color: #ffffff; /* Used as the background color for mobile navigation menu */
   --nav-dropdown-background-color: #ffffff; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
@@ -169,7 +171,6 @@ h6 {
 }
 
 @media (max-width: 575px) {
-
   .header .topbar .contact-info i a,
   .header .topbar .contact-info i span {
     font-size: 13px;
@@ -276,7 +277,7 @@ h6 {
     padding-right: 0;
   }
 
-  .navmenu li:hover>a,
+  .navmenu li:hover > a,
   .navmenu .active,
   .navmenu .active:focus {
     color: var(--nav-hover-color);
@@ -315,11 +316,11 @@ h6 {
 
   .navmenu .dropdown ul a:hover,
   .navmenu .dropdown ul .active:hover,
-  .navmenu .dropdown ul li:hover>a {
+  .navmenu .dropdown ul li:hover > a {
     color: var(--nav-dropdown-hover-color);
   }
 
-  .navmenu .dropdown:hover>ul {
+  .navmenu .dropdown:hover > ul {
     opacity: 1;
     top: 100%;
     visibility: visible;
@@ -331,7 +332,7 @@ h6 {
     visibility: hidden;
   }
 
-  .navmenu .dropdown .dropdown:hover>ul {
+  .navmenu .dropdown .dropdown:hover > ul {
     opacity: 1;
     top: 0;
     left: -100%;
@@ -434,7 +435,7 @@ h6 {
     background-color: rgba(33, 37, 41, 0.1);
   }
 
-  .navmenu .dropdown>.dropdown-active {
+  .navmenu .dropdown > .dropdown-active {
     display: block;
     background-color: rgba(33, 37, 41, 0.03);
   }
@@ -461,7 +462,7 @@ h6 {
     transition: 0.3s;
   }
 
-  .mobile-nav-active .navmenu>ul {
+  .mobile-nav-active .navmenu > ul {
     display: block;
   }
 }
@@ -503,7 +504,7 @@ h6 {
   border-color: var(--accent-color);
 }
 
-.footer .footer-newsletter .newsletter-form input[type=email] {
+.footer .footer-newsletter .newsletter-form input[type="email"] {
   border: 0;
   padding: 4px;
   width: 100%;
@@ -511,11 +512,11 @@ h6 {
   color: var(--default-color);
 }
 
-.footer .footer-newsletter .newsletter-form input[type=email]:focus-visible {
+.footer .footer-newsletter .newsletter-form input[type="email"]:focus-visible {
   outline: none;
 }
 
-.footer .footer-newsletter .newsletter-form input[type=submit] {
+.footer .footer-newsletter .newsletter-form input[type="submit"] {
   border: 0;
   font-size: 16px;
   padding: 0 20px;
@@ -526,7 +527,7 @@ h6 {
   border-radius: 0 4px 4px 0;
 }
 
-.footer .footer-newsletter .newsletter-form input[type=submit]:hover {
+.footer .footer-newsletter .newsletter-form input[type="submit"]:hover {
   background: color-mix(in srgb, var(--accent-color), transparent 20%);
 }
 
@@ -611,7 +612,8 @@ h6 {
 .footer .copyright {
   padding-top: 25px;
   padding-bottom: 25px;
-  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  border-top: 1px solid
+    color-mix(in srgb, var(--default-color), transparent 90%);
 }
 
 .footer .copyright p {
@@ -768,11 +770,11 @@ h6 {
   font-weight: 400;
 }
 
-.page-title .breadcrumbs ol li+li {
+.page-title .breadcrumbs ol li + li {
   padding-left: 10px;
 }
 
-.page-title .breadcrumbs ol li+li::before {
+.page-title .breadcrumbs ol li + li::before {
   content: "/";
   display: inline-block;
   padding-right: 10px;
@@ -792,7 +794,6 @@ section,
 }
 
 @media (max-width: 1199px) {
-
   section,
   .section {
     scroll-margin-top: 60px;
@@ -966,7 +967,7 @@ section,
   justify-content: center;
   overflow: hidden;
   position: relative;
-  perspective: 2000px; 
+  perspective: 2000px;
 }
 
 .story {
@@ -986,7 +987,7 @@ section,
   transform-style: preserve-3d;
   transform: translate(-50%, -50%) rotateY(-120deg);
   opacity: 0;
-  transform-origin: right; 
+  transform-origin: right;
 }
 
 .story img {
@@ -1006,8 +1007,8 @@ section,
   flex: 1;
   max-width: 60%;
   height: auto;
-  border-radius: 15px; 
-  object-fit: cover; 
+  border-radius: 15px;
+  object-fit: cover;
 }
 
 .story.active video {
@@ -1016,7 +1017,7 @@ section,
 }
 
 .story .text {
-  flex: 1; 
+  flex: 1;
 }
 
 .text {
@@ -1026,23 +1027,23 @@ section,
 
 @keyframes flipInLeft {
   0% {
-      transform: translate(-50%, -50%) rotateY(-120deg);
-      opacity: 0;
+    transform: translate(-50%, -50%) rotateY(-120deg);
+    opacity: 0;
   }
   100% {
-      transform: translate(-50%, -50%) rotateY(0);
-      opacity: 1;
+    transform: translate(-50%, -50%) rotateY(0);
+    opacity: 1;
   }
 }
 
 @keyframes flipOutRight {
   0% {
-      transform: translate(-50%, -50%) rotateY(0);
-      opacity: 1;
+    transform: translate(-50%, -50%) rotateY(0);
+    opacity: 1;
   }
   100% {
-      transform: translate(-50%, -50%) rotateY(120deg);
-      opacity: 0;
+    transform: translate(-50%, -50%) rotateY(120deg);
+    opacity: 0;
   }
 }
 
@@ -1072,7 +1073,8 @@ section,
     opacity: 1;
   }
 
-  .story img, .story video {
+  .story img,
+  .story video {
     width: 100%;
     max-width: 90%;
   }
@@ -1117,7 +1119,6 @@ section,
     display: flex;
   }
 }
-
 
 /*--------------------------------------------------------------
 # Yogyakarta
@@ -1166,7 +1167,6 @@ section,
   max-width: 600px; /* Sesuaikan dengan ukuran layar */
 }
 
-
 .slider-container {
   position: relative;
   width: 500px;
@@ -1180,7 +1180,6 @@ section,
   position: relative;
   z-index: 2;
 }
-
 
 .slider-wrapper {
   position: relative;
@@ -1221,7 +1220,8 @@ section,
   z-index: 5;
 }
 
-.slider::-webkit-slider-thumb, .slider::-moz-range-thumb {
+.slider::-webkit-slider-thumb,
+.slider::-moz-range-thumb {
   width: 20px;
   height: 20px;
   background: #ffcc00;
@@ -1257,45 +1257,45 @@ section,
 /* Untuk layar besar (Desktop) */
 @media screen and (min-width: 1024px) {
   #yogyakarta-info {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-      text-align: left;
-      padding: 5rem 10%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+    padding: 5rem 10%;
   }
 
   .text-container {
-      flex: 1;
-      max-width: 50%;
-      text-align: left;
+    flex: 1;
+    max-width: 50%;
+    text-align: left;
   }
 
   .image-container {
-      flex: 1;
-      max-width: 50%;
-      display: flex;
-      justify-content: center;
+    flex: 1;
+    max-width: 50%;
+    display: flex;
+    justify-content: center;
   }
 
   .slider-container {
-      width: 100%;
-      max-width: 500px;
+    width: 100%;
+    max-width: 500px;
   }
 }
 
 /* Untuk layar kecil (Tablet & Mobile) */
 @media screen and (max-width: 1023px) {
   #yogyakarta-info {
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding: 3rem 5%;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 3rem 5%;
   }
 
   .text-container {
-      order: 1;
-      max-width: 90%;
+    order: 1;
+    max-width: 90%;
   }
 
   .image-container {
@@ -1305,19 +1305,18 @@ section,
     width: 100%;
     max-width: 100%;
     min-height: 300px;
-}
+  }
 
   .slider-container {
-      width: 90%;
-      max-width: 450px;
+    width: 90%;
+    max-width: 450px;
   }
   .slider-wrapper img {
     display: block; /* Pastikan gambar tampil */
     width: 100%;
     height: auto;
+  }
 }
-}
-
 
 /*--------------------------------------------------------------
 # Featured Services Section
@@ -2150,8 +2149,8 @@ section,
   }
 }
 
-.contact .php-email-form input[type=text],
-.contact .php-email-form input[type=email],
+.contact .php-email-form input[type="text"],
+.contact .php-email-form input[type="email"],
 .contact .php-email-form textarea {
   font-size: 14px;
   padding: 10px 15px;
@@ -2162,19 +2161,19 @@ section,
   border-color: color-mix(in srgb, var(--default-color), transparent 80%);
 }
 
-.contact .php-email-form input[type=text]:focus,
-.contact .php-email-form input[type=email]:focus,
+.contact .php-email-form input[type="text"]:focus,
+.contact .php-email-form input[type="email"]:focus,
 .contact .php-email-form textarea:focus {
   border-color: var(--accent-color);
 }
 
-.contact .php-email-form input[type=text]::placeholder,
-.contact .php-email-form input[type=email]::placeholder,
+.contact .php-email-form input[type="text"]::placeholder,
+.contact .php-email-form input[type="email"]::placeholder,
 .contact .php-email-form textarea::placeholder {
   color: color-mix(in srgb, var(--default-color), transparent 70%);
 }
 
-.contact .php-email-form button[type=submit] {
+.contact .php-email-form button[type="submit"] {
   color: var(--contrast-color);
   background: var(--accent-color);
   border: 0;
@@ -2183,7 +2182,7 @@ section,
   border-radius: 50px;
 }
 
-.contact .php-email-form button[type=submit]:hover {
+.contact .php-email-form button[type="submit"]:hover {
   background: color-mix(in srgb, var(--accent-color), transparent 25%);
 }
 
@@ -2201,7 +2200,8 @@ section,
   display: block;
   line-height: 1;
   padding: 8px 0 8px 15px;
-  border-left: 3px solid color-mix(in srgb, var(--default-color), transparent 70%);
+  border-left: 3px solid
+    color-mix(in srgb, var(--default-color), transparent 70%);
   margin: 20px 0;
   color: color-mix(in srgb, var(--default-color), transparent 20%);
   transition: 0.3s;
@@ -2265,14 +2265,20 @@ section,
   position: relative;
 }
 
-.portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet {
+.portfolio-details
+  .portfolio-details-slider
+  .swiper-pagination
+  .swiper-pagination-bullet {
   width: 12px;
   height: 12px;
   background-color: color-mix(in srgb, var(--default-color), transparent 85%);
   opacity: 1;
 }
 
-.portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet-active {
+.portfolio-details
+  .portfolio-details-slider
+  .swiper-pagination
+  .swiper-pagination-bullet-active {
   background-color: var(--accent-color);
 }
 
@@ -2287,7 +2293,8 @@ section,
   font-weight: 700;
   margin-bottom: 20px;
   padding-bottom: 20px;
-  border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 85%);
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--default-color), transparent 85%);
 }
 
 .portfolio-details .portfolio-info ul {
@@ -2296,7 +2303,7 @@ section,
   font-size: 15px;
 }
 
-.portfolio-details .portfolio-info ul li+li {
+.portfolio-details .portfolio-info ul li + li {
   margin-top: 10px;
 }
 
