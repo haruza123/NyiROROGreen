@@ -239,6 +239,41 @@
     }
   });
 
+
+  /**
+   * Toggle
+   */
+  window.onload = function() {
+    function toggleImage(element) {
+        let img1 = element.getAttribute("data-img1");
+        let img2 = element.getAttribute("data-img2");
+        let text1 = element.getAttribute("data-text1");
+        let text2 = element.getAttribute("data-text2");
+
+        let textElement = element.parentElement.querySelector(".perbedaan-text");
+
+        let currentBg = element.style.backgroundImage;
+        let currentImg = currentBg.replace('url("', '').replace('")', ''); // Hapus `url("")`
+
+        if (currentImg.includes(img1.split('/').pop())) {
+            element.style.backgroundImage = `url("${img2}")`;
+            textElement.innerText = text2;
+        } else {
+            element.style.backgroundImage = `url("${img1}")`;
+            textElement.innerText = text1;
+        }
+    }
+
+    // Tambahkan event listener ke semua elemen dengan class `.perbedaan-item`
+    document.querySelectorAll('.perbedaan-item').forEach(item => {
+        item.onclick = function() {
+            toggleImage(this);
+        };
+    });
+    
+};
+
+
   /**
    * Initiate Pure Counter
    */
