@@ -1460,7 +1460,43 @@ section,
   transform: scale(1.05);
 }
 
+@media (min-width: 768px) {
+  .perbedaan .perbedaan-item:hover + .perbedaan-text {
+    background: #ffcc00;
+    color: #222;
+    transform: scale(1.05);
+  }
+}
 
+/* RESPONSIVE DESIGN UNTUK HP */
+@media (max-width: 768px) {
+  .perbedaan {
+    padding: 30px 15px;
+  }
+
+  .section-title {
+    font-size: 22px;
+  }
+
+  .section-description {
+    font-size: 14px;
+    max-width: 90%;
+  }
+
+  .sub-title {
+    font-size: 20px;
+  }
+
+  .perbedaan .perbedaan-item {
+    height: 250px;
+  }
+
+  .perbedaan .perbedaan-text {
+    font-size: 14px;
+    max-width: 90%;
+    padding: 10px;
+  }
+}
 
 /*--------------------------------------------------------------
 # About Section
