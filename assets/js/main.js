@@ -218,26 +218,98 @@
         }
       }
     });
+
   });
 
-  /**Slider */
+
   document.addEventListener("DOMContentLoaded", function () {
-    const slider = document.querySelector(".slider");
-    const afterImage = document.querySelector(".after");
-    const sliderBar = document.querySelector(".slider-bar");
+    let sungai = document.getElementById("sungai");
+    let simulasiContainer = document.getElementById("simulasi-container");
+    let lubangAir = document.getElementById("lubang-air");
+    let jumlahSampah = 0;
+    let sampahTersumbat = 0;
+    let sampahList = [];
+    let alertShown = false;
 
-    if (slider && afterImage && sliderBar) {
-      slider.value = 100; // Set awal ke kanan (100%)
-      afterImage.style.clipPath = `inset(0 0 0 0)`;
-      sliderBar.style.left = `100%`;
+    function updateSungai() {
+        let tinggiAir = 90 + (sampahTersumbat >= 4 ? (jumlahSampah - 4) * 10 : 0);
+        let warnaAir = jumlahSampah > 6
+            ? "linear-gradient(to bottom, rgba(100,50,50,0.8), rgba(70,30,30,0.8))"
+            : jumlahSampah > 4
+            ? "linear-gradient(to bottom, rgba(0,150,100,0.8), rgba(0,100,80,0.8))"
+            : "linear-gradient(to bottom, rgba(0,119,190,0.8), rgba(0,87,150,0.8))";
 
-      slider.addEventListener("input", function () {
-        let sliderValue = slider.value;
-        afterImage.style.clipPath = `inset(0 ${100 - sliderValue}% 0 0)`;
-        sliderBar.style.left = `${sliderValue}%`;
-      });
+        sungai.style.height = tinggiAir + "px";
+        sungai.style.background = warnaAir;
+
+        if (sampahTersumbat >= 4 && !alertShown) {
+            alert("🚨 Air mulai naik akibat sampah yang menyumbat!");
+            alertShown = true;
+        }
     }
-  });
+
+    window.tambahSampah = function () {
+        if (jumlahSampah < 10) {
+            jumlahSampah++;
+            let sampah = document.createElement("div");
+            sampah.className = "sampah";
+
+            let containerRect = simulasiContainer.getBoundingClientRect();
+            let sungaiRect = sungai.getBoundingClientRect();
+            let lubangRect = lubangAir.getBoundingClientRect();
+
+            let lubangX = lubangRect.left - containerRect.left + (lubangRect.width / 2) - 25;
+            let lubangY = lubangRect.top - containerRect.top;
+
+
+            let startX = Math.random() * 80 + "%"; 
+            let startY = sungaiRect.top - containerRect.top + 30; 
+
+            sampah.style.left = startX;
+            sampah.style.top = startY + "px";
+
+            simulasiContainer.appendChild(sampah);
+            sampahList.push(sampah);
+
+            let moveSampah = setInterval(() => {
+                let sampahX = parseFloat(sampah.style.left);
+                let sampahY = parseFloat(sampah.style.top);
+                
+                let dx = (lubangX - sampahX) * 0.1;
+                let dy = (lubangY - sampahY) * 0.1;
+
+                sampah.style.left = sampahX + dx + "px";
+                sampah.style.top = sampahY + dy + "px";
+
+                if (Math.abs(sampahX - lubangX) < 5 && Math.abs(sampahY - lubangY) < 5) {
+                    clearInterval(moveSampah);
+                    if (sampahTersumbat < 4) {
+                        sampah.style.left = lubangX + "px";
+                        sampah.style.top = lubangY + "px";
+                        sampahTersumbat++;
+                    } 
+                    else {
+                        sampah.style.left = lubangX + "px";
+                        sampah.style.top = (lubangY - 20) + "px";
+                    }
+                    updateSungai();
+                }
+            }, 100);
+        } else {
+            alert("⚠️ Terlalu banyak sampah! Sungai penuh!");
+        }
+    };
+
+    window.resetSimulation = function () {
+        jumlahSampah = 0;
+        sampahTersumbat = 0;
+        alertShown = false;
+        sungai.style.height = "90px";
+        sungai.style.background = "linear-gradient(to bottom, rgba(0,119,190,0.8), rgba(0,87,150,0.8))";
+        sampahList.forEach(sampah => sampah.remove());
+        sampahList = [];
+    };
+});
 
 
   /**

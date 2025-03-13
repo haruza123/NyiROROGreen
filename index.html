@@ -255,10 +255,6 @@
     </div>
 </section>
 
-
-
-    
-
     <section id="perbedaan" class="perbedaan section"> 
       <div class="container">
         <div class="section-header text-center">
@@ -317,6 +313,46 @@
           </div>
         </div>
     
+      </div>
+    </section>
+
+
+    <section id="data-fakta-simulasi" class="container">
+      <h1 class="section-title">Data & Simulasi: Sampah dan Banjir</h1>
+      
+      <div class="data-fakta">
+        <h2>Fakta Penting:</h2>
+        <ul>
+          <li><strong>Sampah sebagai Penyebab Banjir:</strong>
+              <ul>
+                  <li>Sungai Code, Gajah Wong, dan Winongo sering tersumbat sampah, menyebabkan banjir saat musim hujan.</li>
+                  <li>Tahun 2023, banjir di beberapa titik Yogyakarta dikaitkan dengan buruknya drainase akibat tumpukan sampah.</li>
+              </ul>
+          </li>
+          <li><strong>Ancaman Sampah Plastik terhadap Pertanian:</strong>
+              <ul>
+                  <li>Kabupaten Sleman dan Bantul mengalami penurunan kualitas tanah akibat mikroplastik dari sampah.</li>
+              </ul>
+          </li>
+        </ul>
+      </div>
+    
+      <div class="simulasi">
+        <h2>Simulasi Interaktif: Dampak Sampah terhadap Sungai</h2>
+        <p>Klik tombol untuk menambahkan sampah. Jika terlalu banyak, kota akan tenggelam!</p>
+        
+        <div id="simulasi-container" onclick="laporSampah(event)">
+          <div id="sungai"></div>
+          <div id="tembok">
+            <div id="lubang-air"></div>
+          </div>
+        </div>
+        
+        <br>
+        <div id="tombol-container">
+          <button onclick="tambahSampah()">Tambah Sampah</button>
+          <button onclick="resetSimulation()">Reset Simulasi</button>
+        </div>
       </div>
     </section>
     
