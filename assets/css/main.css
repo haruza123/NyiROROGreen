@@ -1452,6 +1452,135 @@ button:nth-child(2) { background-color: #007bff; color: white; }
   }
 }
 
+/* Form */
+#laporan-form-container {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 25px;
+  background: var(--surface-color);
+  border-radius: 8px;
+  text-align: center;
+}
+
+#laporan-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--heading-color);
+}
+
+#toggle-form {
+  background: var(--accent-color);
+  color: var(--contrast-color);
+  font-size: 18px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+#toggle-form:hover {
+  background: color-mix(in srgb, var(--accent-color), transparent 15%);
+}
+
+#laporan-form {
+  display: none;
+  margin-top: 20px;
+}
+
+#laporan-form label {
+  display: block;
+  font-weight: 600;
+  margin-top: 10px;
+  color: var(--default-color);
+}
+
+#laporan-form input,
+#laporan-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 70%);
+  border-radius: 5px;
+  font-size: 16px;
+  background: var(--background-color);
+  color: var(--default-color);
+}
+
+#laporan-form textarea {
+  resize: none;
+}
+
+#laporan-form input:focus,
+#laporan-form textarea:focus {
+  border-color: var(--accent-color);
+  outline: none;
+  box-shadow: 0 0 5px color-mix(in srgb, var(--accent-color), transparent 20%);
+}
+
+/* File Upload Styling */
+#laporan-form input[type="file"] {
+  padding: 8px;
+  border: none;
+  background: var(--background-color);
+}
+
+#laporan-form button {
+  width: 100%;
+  background: var(--accent-color);
+  color: var(--contrast-color);
+  font-size: 18px;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+#laporan-form button:hover {
+  background: color-mix(in srgb, var(--accent-color), transparent 15%);
+}
+
+#autocomplete-results {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  background: white;
+  border: 1px solid #ccc;
+  max-height: 200px;
+  overflow-y: auto;
+  width: 250px;
+  z-index: 1000;
+}
+
+#autocomplete-results li {
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+}
+
+#autocomplete-results li:hover {
+  background: #f0f0f0;
+}
+
+
+@media screen and (max-width: 768px) {
+  #laporan-form-container {
+    max-width: 90%;
+    padding: 20px;
+  }
+  
+  #laporan-form button, #toggle-form {
+    font-size: 16px;
+    padding: 10px;
+  }
+}
+
+
 
 
 /*--------------------------------------------------------------

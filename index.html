@@ -27,6 +27,9 @@
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
 
+  <!--Map-->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
   <!-- =======================================================
   * Template Name: BizLand
   * Template URL: https://bootstrapmade.com/bizland-bootstrap-business-template/
@@ -236,9 +239,9 @@
         <div class="text-container">
             <h3>Data & Fakta:</h3>
             <ul>
-                <li><strong>🟢 Timbulan Sampah Tinggi:</strong> Setiap hari, Yogyakarta menghasilkan 700 ton sampah, dengan lebih dari 50% plastik & organik tidak terkelola.</li>
-                <li><strong>⚠️ TPA Piyungan Overload:</strong> Kapasitas penuh, menyebabkan sampah menumpuk di berbagai titik kota.</li>
-                <li><strong>🏝️ Dampak Pariwisata:</strong> Sampah mencemari kawasan populer seperti Pantai Parangtritis, Kali Code, dan Malioboro.</li>
+                <li><strong>Timbulan Sampah Tinggi:</strong> Setiap hari, Yogyakarta menghasilkan 700 ton sampah, dengan lebih dari 50% plastik & organik tidak terkelola.</li>
+                <li><strong>TPA Piyungan Overload:</strong> Kapasitas penuh, menyebabkan sampah menumpuk di berbagai titik kota.</li>
+                <li><strong>Dampak Pariwisata:</strong> Sampah mencemari kawasan populer seperti Pantai Parangtritis, Kali Code, dan Malioboro.</li>
             </ul>
         </div>
 
@@ -354,6 +357,34 @@
           <button onclick="resetSimulation()">Reset Simulasi</button>
         </div>
       </div>
+
+      <div id="laporan-form-container">
+        <h3 id="laporan-title">Melihat sampah? Laporkan</h3>
+        <button id="toggle-form">Laporkan Sampah</button>
+        <form id="laporan-form">
+            <label for="nama">Nama:</label>
+            <input type="text" id="nama" name="nama" required>
+
+            <label for="lokasi">Lokasi (Alamat Otomatis):</label>
+            <input type="text" id="lokasi" name="lokasi" required>
+            <ul id="autocomplete-results"></ul>
+            <button type="button" id="btn-lokasi">Gunakan Lokasi Saat Ini</button>
+
+            <div id="map"></div>
+
+            <label for="deskripsi">Deskripsi:</label>
+            <textarea id="deskripsi" name="deskripsi" rows="3" required></textarea>
+
+            <label for="foto">Unggah Foto:</label>
+            <input type="file" id="foto" name="foto" accept="image/*">
+
+            <button type="submit">📤 Kirim Laporan</button>
+        </form>
+
+        <h3>Laporan Terkini</h3>
+<div id="laporan-list"></div>
+
+    </div>
     </section>
     
 
@@ -1290,10 +1321,22 @@
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdq23uQOM23v_nD_cKynCrNvLchn_LFf0&callback=initMap" async defer></script>
+  <script async defer
+  src="https://maps.gomaps.pro/maps/api/js?key=AlzaSyZjb3ZmX1MgZHXujV4rBOq_h8WOSuxCSDA&libraries=geometry,places&callback=initMap">
+</script> -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<!--Database-->
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
+
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
-
+  <script src="assets/js/map.js"></script>
+  <script src="assets/js/firebase.js"></script>
+   
 </body>
 
 </html>

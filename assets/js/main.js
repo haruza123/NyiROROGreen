@@ -221,7 +221,7 @@
 
   });
 
-
+/**SImulasi Banjir */
   document.addEventListener("DOMContentLoaded", function () {
     let sungai = document.getElementById("sungai");
     let simulasiContainer = document.getElementById("simulasi-container");
@@ -344,6 +344,18 @@
     });
     
 };
+
+/**Form */
+document.getElementById("toggle-form").addEventListener("click", function() {
+  var form = document.getElementById("laporan-form");
+  if (form.style.display === "none" || form.style.display === "") {
+      form.style.display = "block";
+      this.textContent = "Tutup Form";
+  } else {
+      form.style.display = "none";
+      this.textContent = "Laporkan Sampah";
+  }
+});
 
 
   /**
