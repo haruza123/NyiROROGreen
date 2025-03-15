@@ -386,6 +386,41 @@
 
     </div>
     </section>
+
+    <section class="education-section">
+      <h2>Yogyakarta Sebagai Pusat Pendidikan</h2>
+      <p class="subtitle">Edukasi Sampah untuk Generasi Muda</p>
+  
+      <!-- Data & Fakta -->
+      <div class="facts">
+          <h3>Data & Fakta:</h3>
+          <ul>
+              <li>
+                  Yogyakarta adalah kota pelajar dengan lebih dari 
+                  <span class="tooltip" data-tooltip="Jumlah mahasiswa di Yogyakarta lebih dari 400.000">400.000</span> mahasiswa dari berbagai daerah.
+              </li>
+              <li>Mahasiswa dan pelajar sebagai agen perubahan dalam kampanye lingkungan.</li>
+              <li>
+                  Banyak sekolah dan kampus memiliki program pengelolaan sampah, tetapi edukasi masih bersifat konvensional dan tidak interaktif.
+              </li>
+          </ul>
+      </div>
+  
+      <!-- Interaktif -->
+      <div class="interactive">
+          <h3>Interaktifitas dalam Edukasi</h3>
+          <button class="accordion">Bagaimana Media Digital Membantu?</button>
+          <div class="panel">
+              <p>Mahasiswa dan pelajar lebih mudah menyerap informasi melalui **media digital dan visual interaktif**.</p>
+          </div>
+  
+          <button class="accordion">Bagaimana Integrasi ke Akademik?</button>
+          <div class="panel">
+              <p>Bisa diintegrasikan dalam program akademik atau ekstrakurikuler tentang lingkungan.</p>
+          </div>
+      </div>
+  </section>
+  
     
 
     <!-- Skills Section -->
@@ -1328,14 +1363,32 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
 <!--Database-->
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
+<script type="module">
+  import { tambahLaporan, loadLaporan } from "./assets/js/firebase.js";
 
+  document.getElementById("laporan-form").addEventListener("submit", async function(event) {
+      event.preventDefault();
 
+      let nama = document.getElementById("nama").value;
+      let lokasi = document.getElementById("lokasi").value;
+      let deskripsi = document.getElementById("deskripsi").value;
+      let fotoFile = document.getElementById("foto").files[0];
+
+      let success = await tambahLaporan(nama, lokasi, deskripsi, fotoFile);
+      if (success) {
+          document.getElementById("laporan-form").reset();
+          loadLaporan();
+      }
+  });
+
+  // 🔥 Load laporan saat halaman dimuat
+  loadLaporan();
+</script>
   <!-- Main JS File -->
+  <script src="assets/js/firebase.js"></script>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/map.js"></script>
-  <script src="assets/js/firebase.js"></script>
+  
    
 </body>
 

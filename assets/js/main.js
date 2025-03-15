@@ -143,83 +143,124 @@
     let storyContainer = document.querySelector(".story-container");
     let storyActive = false;
     let isScrolling = false;
+    let startY = 0; 
+    let endY = 0;   
 
     function showStory(index) {
-      stories.forEach((story, i) => {
-        if (i === index) {
-          story.classList.add("active");
-          story.classList.remove("exit");
-        } else if (i < index) {
-          story.classList.add("exit"); // Flip out ke kanan
-          story.classList.remove("active");
-        } else {
-          story.classList.remove("active", "exit");
-        }
-      });
+        stories.forEach((story, i) => {
+            if (i === index) {
+                story.classList.add("active");
+                story.classList.remove("exit");
+            } else if (i < index) {
+                story.classList.add("exit"); 
+                story.classList.remove("active");
+            } else {
+                story.classList.remove("active", "exit");
+            }
+        });
     }
 
     function nextStory() {
-      if (!isScrolling && currentIndex < stories.length - 1) {
-        isScrolling = true;
-        currentIndex++;
-        showStory(currentIndex);
-        setTimeout(() => (isScrolling = false), 1000);
-      } else if (currentIndex === stories.length - 1) {
-        enableScroll();
-      }
+        if (!isScrolling && currentIndex < stories.length - 1) {
+            isScrolling = true;
+            currentIndex++;
+            showStory(currentIndex);
+            setTimeout(() => (isScrolling = false), 1000);
+        } else if (currentIndex === stories.length - 1) {
+            enableScroll();
+        }
     }
 
     function prevStory() {
-      if (!isScrolling && currentIndex > 0) {
-        isScrolling = true;
-        currentIndex--;
-        showStory(currentIndex);
-        setTimeout(() => (isScrolling = false), 1000);
-      } else if (currentIndex === 0) {
-        enableScroll();
-      }
+        if (!isScrolling && currentIndex > 0) {
+            isScrolling = true;
+            currentIndex--;
+            showStory(currentIndex);
+            setTimeout(() => (isScrolling = false), 1000);
+        } else if (currentIndex === 0) {
+            enableScroll();
+        }
     }
 
     function disableScroll() {
-      document.body.style.overflow = "hidden";
+        document.body.style.overflow = "hidden";
     }
 
     function enableScroll() {
-      document.body.style.overflow = "auto";
-      storyActive = false;
+        document.body.style.overflow = "auto";
+        storyActive = false;
     }
 
     function disableScrollAgain() {
-      document.body.style.overflow = "hidden";
-      storyActive = true;
+        document.body.style.overflow = "hidden";
+        storyActive = true;
     }
 
     let observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            storyActive = true;
-            disableScrollAgain();
-            showStory(currentIndex);
-          }
-        });
-      },
-      { threshold: 0.8 }
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    storyActive = true;
+                    disableScrollAgain();
+                    showStory(currentIndex);
+                }
+            });
+        },
+        { threshold: 0.8 }
     );
 
     observer.observe(storyContainer);
 
     window.addEventListener("wheel", function (event) {
-      if (storyActive) {
-        if (event.deltaY > 0) {
-          nextStory();
-        } else {
-          prevStory();
+        if (storyActive) {
+            if (event.deltaY > 0) {
+                nextStory();
+            } else {
+                prevStory();
+            }
         }
-      }
     });
 
+    storyContainer.addEventListener("touchstart", function (event) {
+        startY = event.touches[0].clientY;
+    });
+
+    storyContainer.addEventListener("touchend", function (event) {
+        endY = event.changedTouches[0].clientY;
+
+        if (storyActive) {
+            let diff = startY - endY;
+
+            if (diff > 50) {
+                nextStory();
+            } else if (diff < -50) {
+                prevStory();
+            }
+        }
+    });
+
+});
+
+/**slider */
+document.addEventListener("DOMContentLoaded", function () {
+  const slider = document.querySelector(".slider");
+  const afterImage = document.querySelector(".after");
+  const sliderBar = document.querySelector(".slider-bar");
+
+  slider.value = 100;
+  afterImage.style.clipPath = `inset(0 0% 0 0)`; 
+  sliderBar.style.left = `100%`; 
+
+  slider.addEventListener("input", function () {
+      let sliderValue = slider.value;
+
+      afterImage.style.clipPath = `inset(0 ${100 - sliderValue}% 0 0)`;
+      sliderBar.style.left = `${sliderValue}%`;
   });
+});
+
+
+
 
 /**SImulasi Banjir */
   document.addEventListener("DOMContentLoaded", function () {
@@ -356,6 +397,20 @@ document.getElementById("toggle-form").addEventListener("click", function() {
       this.textContent = "Laporkan Sampah";
   }
 });
+
+/**education */
+document.querySelectorAll(".accordion").forEach((acc) => {
+  acc.addEventListener("click", function () {
+      this.classList.toggle("active");
+      let panel = this.nextElementSibling;
+      if (panel.style.display === "block") {
+          panel.style.display = "none";
+      } else {
+          panel.style.display = "block";
+      }
+  });
+});
+
 
 
   /**

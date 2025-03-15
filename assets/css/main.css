@@ -1567,6 +1567,37 @@ button:nth-child(2) { background-color: #007bff; color: white; }
   background: #f0f0f0;
 }
 
+#map {
+  width: 100%;
+  height: 250px; 
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+#lokasi {
+  width: calc(100% - 20px);
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+#btn-lokasi {
+  width: 100%;
+  background: #007bff;
+  color: white;
+  font-size: 16px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+#btn-lokasi:hover {
+  background: #0056b3;
+}
+
 
 @media screen and (max-width: 768px) {
   #laporan-form-container {
@@ -1580,6 +1611,97 @@ button:nth-child(2) { background-color: #007bff; color: white; }
   }
 }
 
+/*--------------------------------------------------------------
+# Education
+--------------------------------------------------------------*/
+
+.education-section {
+  width: 80%;
+  margin: auto;
+  padding: 20px;
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 1.2em;
+  margin-bottom: 20px;
+  color: #666;
+}
+
+.facts h3, .interactive h3 {
+  color: #007bff;
+}
+
+.facts ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.facts li {
+  background: #fff;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.tooltip {
+  position: relative;
+  cursor: pointer;
+  color: #007bff;
+  font-weight: bold;
+}
+
+.tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  background: #333;
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -30px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  white-space: nowrap;
+}
+
+.tooltip:hover::after {
+  opacity: 1;
+}
+
+.accordion {
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 16px;
+  transition: 0.4s;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.accordion:hover {
+  background-color: #0056b3;
+}
+
+.panel {
+  padding: 10px;
+  display: none;
+  background-color: #f1f1f1;
+  overflow: hidden;
+  margin-top: 5px;
+  border-radius: 5px;
+}
 
 
 
