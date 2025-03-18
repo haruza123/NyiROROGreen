@@ -11,27 +11,29 @@
 <body class="admin-body">
     <div class="admin-container">
         <h2>📌 Daftar Laporan Masuk</h2>
+        
+        <!-- 🔍 Pencarian -->
+        <input type="text" id="search-box" placeholder="🔍 Cari berdasarkan nama atau lokasi..." oninput="filterLaporan()">
+
         <button onclick="loadLaporan()">🔄 Muat Ulang</button>
         <div id="laporan-list"></div>
     </div>
 
     <button id="logout-btn">🚪 Logout</button>
+
+    <script type="module">
+        import { auth, logoutAdmin } from "./assets/js/firebase.js";  
+        import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+        onAuthStateChanged(auth, (user) => {
+            if (!user) {
+                window.location.href = "login.html"; 
+            }
+        });
+
+        document.getElementById("logout-btn").addEventListener("click", () => {
+            logoutAdmin();
+        });
+    </script>
 </body>
-
-<script type="module">
-    import { auth, logoutAdmin } from "./assets/js/firebase.js";  
-    import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-
-    // 🔥 Cek apakah user sudah login
-    onAuthStateChanged(auth, (user) => {
-        if (!user) {
-            window.location.href = "login.html"; 
-        }
-    });
-
-    // 🔥 Logout dengan logoutAdmin()
-    document.getElementById("logout-btn").addEventListener("click", () => {
-        logoutAdmin();
-    });
-</script>
 </html>

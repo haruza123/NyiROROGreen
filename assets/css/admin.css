@@ -74,3 +74,12 @@ button:hover {
     font-size: 14px;
     font-style: italic;
 }
+
+#search-box {
+    width: 90%;
+    padding: 10px;
+    margin: 10px auto;
+    display: block;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
