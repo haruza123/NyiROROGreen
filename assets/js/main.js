@@ -399,17 +399,80 @@ document.getElementById("toggle-form").addEventListener("click", function() {
 });
 
 /**education */
-document.querySelectorAll(".accordion").forEach((acc) => {
-  acc.addEventListener("click", function () {
+document.querySelectorAll(".accordion").forEach((button) => {
+  button.addEventListener("click", function () {
       this.classList.toggle("active");
       let panel = this.nextElementSibling;
-      if (panel.style.display === "block") {
-          panel.style.display = "none";
-      } else {
-          panel.style.display = "block";
-      }
+      panel.style.display = panel.style.display === "block" ? "none" : "block";
   });
 });
+
+function openModal() {
+  document.getElementById("modal").style.display = "flex";
+}
+
+function closeModal() {
+  document.getElementById("modal").style.display = "none";
+}
+
+const quizData = [
+  { question: "Apa yang paling berdampak dalam mengurangi sampah plastik?", options: ["Menggunakan plastik sekali pakai", "Membawa botol minum sendiri", "Membakar sampah plastik", "Membuang plastik ke laut"], answer: "B" },
+  { question: "Apa tujuan utama dari daur ulang?", options: ["Mengurangi limbah", "Meningkatkan polusi", "Memperbanyak produksi plastik", "Membuang sampah lebih cepat"], answer: "A" },
+  { question: "Apa yang termasuk sampah organik?", options: ["Botol plastik", "Daun kering", "Kaca", "Kaleng aluminium"], answer: "B" },
+  { question: "Apa warna tempat sampah untuk sampah organik di Indonesia?", options: ["Biru", "Hijau", "Merah", "Kuning"], answer: "B" },
+  { question: "Apa yang dapat dilakukan dengan kertas bekas untuk mengurangi sampah?", options: ["Dibuang ke sungai", "Dibakar", "Didaur ulang", "Dibuang ke tempat sampah biasa"], answer: "C" },
+  { question: "Apa yang bukan termasuk sampah elektronik?", options: ["Baterai bekas", "Monitor rusak", "Sisa makanan", "Handphone bekas"], answer: "C" },
+  { question: "Apa efek utama dari sampah plastik di laut?", options: ["Membantu ikan berenang", "Meningkatkan populasi ikan", "Membahayakan kehidupan laut", "Tidak ada efek"], answer: "C" },
+  { question: "Apa manfaat dari composting?", options: ["Mengurangi sampah organik", "Meningkatkan polusi udara", "Membuat plastik lebih tahan lama", "Menambah limbah B3"], answer: "A" },
+  { question: "Bagaimana cara terbaik mengelola sampah di rumah?", options: ["Membuangnya sembarangan", "Memisahkan sampah organik dan anorganik", "Membakar semua sampah", "Membuang ke tempat sampah biasa"], answer: "B" },
+  { question: "Apa yang dimaksud dengan ekonomi sirkular?", options: ["Menggunakan kembali produk bekas", "Membuang semua barang lama", "Menghindari penggunaan produk daur ulang", "Memproduksi lebih banyak plastik"], answer: "A" }
+];
+
+let currentQuestionIndex = 0;
+
+function loadQuestion() {
+  const questionContainer = document.getElementById("question");
+  const buttons = document.querySelectorAll(".quiz-btn");
+
+  if (currentQuestionIndex < quizData.length) {
+      const quizItem = quizData[currentQuestionIndex];
+      questionContainer.innerText = quizItem.question;
+
+      buttons.forEach((button, index) => {
+          button.innerText = `${["A", "B", "C", "D"][index]}. ${quizItem.options[index]}`;
+          button.dataset.answer = ["A", "B", "C", "D"][index];
+          button.style.background = "#007bff"; 
+          button.disabled = false; 
+      });
+  } else {
+      questionContainer.innerText = "🎉 Selamat! Anda telah menyelesaikan quiz!";
+      buttons.forEach((button) => (button.style.display = "none"));
+  }
+}
+
+document.querySelectorAll(".quiz-btn").forEach(button => {
+  button.addEventListener("click", function () {
+      checkAnswer(this.dataset.answer, this);
+  });
+});
+
+function checkAnswer(answer, button) {
+  if (!button) return; 
+
+  if (answer === quizData[currentQuestionIndex].answer) {
+      button.style.background = "green"; 
+      setTimeout(() => {
+          currentQuestionIndex++; 
+          loadQuestion();
+      }, 1000);
+  } else {
+      button.style.background = "red"; 
+      button.disabled = true; 
+      alert("❌ Jawaban Salah! Coba lagi.");
+  }
+}
+
+document.addEventListener("DOMContentLoaded", loadQuestion);
 
 
 

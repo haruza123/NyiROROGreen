@@ -381,8 +381,6 @@
             <button type="submit">📤 Kirim Laporan</button>
         </form>
 
-        <h3>Laporan Terkini</h3>
-<div id="laporan-list"></div>
 
     </div>
     </section>
@@ -409,17 +407,38 @@
       <!-- Interaktif -->
       <div class="interactive">
           <h3>Interaktifitas dalam Edukasi</h3>
-          <button class="accordion">Bagaimana Media Digital Membantu?</button>
-          <div class="panel">
-              <p>Mahasiswa dan pelajar lebih mudah menyerap informasi melalui **media digital dan visual interaktif**.</p>
-          </div>
   
           <button class="accordion">Bagaimana Integrasi ke Akademik?</button>
           <div class="panel">
-              <p>Bisa diintegrasikan dalam program akademik atau ekstrakurikuler tentang lingkungan.</p>
+              <p>Edukasi pengelolaan sampah bisa diintegrasikan dalam:</p>
+              <ul>
+                  <li><strong>Program Akademik:</strong> Mata kuliah seperti Ekologi, Lingkungan, atau Teknik Pengelolaan Limbah.</li>
+                  <li><strong>Proyek Kampus:</strong> Mahasiswa bisa terlibat dalam proyek pengelolaan sampah, bank sampah, dan penelitian terkait.</li>
+                  <li><strong>Ekstrakurikuler:</strong> Klub lingkungan yang aktif dalam kampanye daur ulang dan aksi bersih-bersih.</li>
+                  <li><strong>Kompetisi:</strong> Universitas bisa mengadakan lomba inovasi pengolahan sampah.</li>
+              </ul>
           </div>
+  
+          <button class="accordion">Tes Pengetahuan Singkat</button>
+          <div class="panel" id="quiz-container">
+            <p id="question">Pertanyaan akan muncul di sini</p>
+            <button class="quiz-btn" id="btnA">A</button>
+            <button class="quiz-btn" id="btnB">B</button>
+            <button class="quiz-btn" id="btnC">C</button>
+            <button class="quiz-btn" id="btnD">D</button>
+        </div>
       </div>
   </section>
+  
+  <!-- Modal Pop-up -->
+  <div id="modal" class="modal">
+      <div class="modal-content">
+          <h3>📖 Studi Kasus: Edukasi Sampah Digital</h3>
+          <p>Sebuah universitas di Yogyakarta sukses mengintegrasikan edukasi sampah dalam mata kuliah wajib...</p>
+          <button class="close-modal" onclick="closeModal()">Tutup</button>
+      </div>
+  </div>
+  
   
     
 

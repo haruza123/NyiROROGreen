@@ -1,9 +1,8 @@
-// 🔹 Import Firebase Module (Versi 10+)
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getFirestore, collection, addDoc, getDocs, serverTimestamp, query, orderBy, onSnapshot } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
+import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-// 🔥 Konfigurasi Firebase
 const firebaseConfig = {
     apiKey: "AIzaSyAZ5XC7vvePD9uC461HnwQLTnfKMe0n06Q",
     authDomain: "utskami-63c64.firebaseapp.com",
@@ -14,13 +13,30 @@ const firebaseConfig = {
     measurementId: "G-PR0FTK6P64"
 };
 
-// 🔥 Inisialisasi Firebase
+// 🔥 Inisialisasi Firebase hanya sekali
 const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 const db = getFirestore(app);
 const storage = getStorage(app);
 
-// 🔥 Tes apakah Firebase berhasil dimuat
 console.log("🔥 Firebase berhasil dimuat!");
+
+// 🔹 Fungsi Login Admin
+async function loginAdmin(email, password) {
+    return signInWithEmailAndPassword(auth, email, password);
+}
+
+// 🔹 Fungsi Logout Admin
+function logoutAdmin() {
+    return signOut(auth);
+}
+
+// 🔹 Cek jika user tidak login di admin.html
+onAuthStateChanged(auth, (user) => {
+    if (!user && window.location.pathname.includes("admin.html")) {
+        window.location.href = "login.html";
+    }
+});
 
 // 🔹 Fungsi menambahkan laporan
 async function tambahLaporan(nama, lokasi, deskripsi, fotoFile) {
@@ -34,10 +50,10 @@ async function tambahLaporan(nama, lokasi, deskripsi, fotoFile) {
         }
 
         await addDoc(collection(db, "Form"), {
-            nama: nama,
-            lokasi: lokasi,
-            deskripsi: deskripsi,
-            fotoUrl: fotoUrl,
+            nama,
+            lokasi,
+            deskripsi,
+            fotoUrl,
             timestamp: serverTimestamp()
         });
 
@@ -52,7 +68,7 @@ async function tambahLaporan(nama, lokasi, deskripsi, fotoFile) {
 // 🔹 Fungsi menampilkan laporan
 async function loadLaporan() {
     const laporanList = document.getElementById("laporan-list");
-    laporanList.innerHTML = "";
+    laporanList.innerHTML = "<p>Memuat laporan...</p>";
 
     const q = query(collection(db, "Form"), orderBy("timestamp", "desc"));
     onSnapshot(q, (snapshot) => {
@@ -72,5 +88,5 @@ async function loadLaporan() {
     });
 }
 
-// Export fungsi agar bisa digunakan di file lain
-export { tambahLaporan, loadLaporan };
+// 🔹 Ekspor variabel agar bisa digunakan di file lain
+export { app, auth, db, storage, loginAdmin, logoutAdmin, tambahLaporan, loadLaporan };
