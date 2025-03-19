@@ -1124,7 +1124,7 @@ section,
   align-items: center;
   gap: 2rem;
 }
-/* Container teks */
+
 .text-container {
   flex: 1;
   max-width: 50%;
@@ -1150,22 +1150,34 @@ section,
   margin-bottom: 0.5rem;
 }
 
-/* Container gambar */
+
 .image-container {
   display: flex !important;
   justify-content: center;
   align-items: center;
   flex: 1;
   width: 100%;
-  max-width: 600px; /* Sesuaikan dengan ukuran layar */
+  max-width: 600px; 
+}
+
+
+#yogyakarta-info .text-container,
+#yogyakarta-info .image-container {
+  opacity: 0;
+  transform: translateX(0); 
+}
+
+#yogyakarta-info .section-title {
+  opacity: 0; 
+  transform: translateY(-20px); 
 }
 
 .slider-container {
   position: relative;
   width: 100%;
-  max-width: 500px; /* Sesuaikan ukuran layar */
+  max-width: 500px; 
   height: auto;
-  aspect-ratio: 5 / 4; /* Agar tetap proporsional */
+  aspect-ratio: 5 / 4; 
   overflow: hidden;
   border-radius: 12px;
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
@@ -1227,6 +1239,7 @@ section,
   border-radius: 50%;
   cursor: grab;
 }
+
 @media screen and (max-width: 1024px) { /* Tablet */
   .content-wrapper {
     flex-direction: row;
@@ -1452,6 +1465,51 @@ button:nth-child(2) { background-color: #007bff; color: white; }
   }
 }
 
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.fade-in-left {
+  animation: slideInLeft 1s ease-out forwards;
+}
+
+.fade-in-right {
+  animation: slideInRight 1s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px); 
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0); 
+  }
+}
+
+#yogyakarta-info .fade-in-title {
+  animation: fadeIn 1s ease-out forwards;
+}
+
 /* Form */
 #laporan-form-container {
   max-width: 500px;
@@ -1611,6 +1669,9 @@ button:nth-child(2) { background-color: #007bff; color: white; }
   }
 }
 
+
+
+
 /*--------------------------------------------------------------
 # Education
 --------------------------------------------------------------*/
@@ -1633,7 +1694,6 @@ h2 {
   color: #666;
 }
 
-/* 🔹 Tooltip dengan efek hover */
 .tooltip {
   position: relative;
   cursor: pointer;
@@ -1668,7 +1728,6 @@ h2 {
   opacity: 1;
 }
 
-/* 🔹 Accordion lebih smooth */
 .accordion {
   background-color: #007bff;
   color: white;
@@ -1699,7 +1758,6 @@ h2 {
   border-left: 5px solid #007bff;
 }
 
-/* 🔹 Modal untuk info tambahan */
 .modal {
   display: none;
   position: fixed;
@@ -1732,7 +1790,6 @@ h2 {
   font-size: 14px;
 }
 
-/* 🔹 Styling untuk tombol quiz */
 .quiz-btn {
   display: block;
   width: 100%;

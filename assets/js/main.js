@@ -259,7 +259,31 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+// Fungsi untuk menambahkan animasi saat elemen masuk layar
+const observer = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      if (entry.target.classList.contains('section-title')) {
+        entry.target.classList.add('fade-in-title'); 
+      } else if (entry.target.classList.contains('text-container')) {
+        entry.target.classList.add('fade-in-left'); 
+      } else if (entry.target.classList.contains('image-container')) {
+        entry.target.classList.add('fade-in-right'); 
+      }
+      observer.unobserve(entry.target); 
+    }
+  });
+}, {
+  threshold: 0.5 
+});
 
+const titleElement = document.querySelector('#yogyakarta-info .section-title');
+const textElement = document.querySelector('#yogyakarta-info .text-container');
+const imageElement = document.querySelector('#yogyakarta-info .image-container');
+
+observer.observe(titleElement);
+observer.observe(textElement);
+observer.observe(imageElement);
 
 
 /**SImulasi Banjir */
