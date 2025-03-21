@@ -371,10 +371,10 @@
 
   </section>
     <section id="perbedaan" class="perbedaan section"> 
-      <div class="container section-title" data-aos="fade-up">
-        <p><span>Memayu Hanuning Bawana</span></p>
-      </div>
-      <div class="container">
+        <div class="container section-title" data-aos="fade-up">
+          <!-- <h2 data-aos="fade-down" data-aos-duration="1000" data-aos-delay="100"></h2> -->
+          <p><span>Memayu Hanuning Bawana</span> <span class="description-title"></span></p>
+        </div>
         <div class="section-header text-center">
           <p data-aos="fade-in" data-aos-duration="800" data-aos-delay="100">
             <strong>Memayu Hayuning Bawana</strong> adalah filosofi Jawa yang berarti <i>"Menjaga dan Memperindah Dunia"</i>. 
@@ -389,7 +389,7 @@
           <div class="row gy-4">
             
             <!-- Rumah Dulu vs Sekarang -->
-            <div class="col-xl-4 col-md-6 d-flex flex-column align-items-center" data-aos="fade-up" data-aos-delay="100">
+            <div class="col-xl-4 col-md-6 d-flex flex-column align-items-center" data-aos="fade-up" data-aos-delay="300">
               <div class="perbedaan-item"
                    data-img1="assets/img/Kampung.jpg"
                    data-img2="assets/img/rumah_sampah.png"
@@ -402,7 +402,7 @@
             </div>
     
             <!-- Kebiasaan Membungkus Makanan -->
-            <div class="col-xl-4 col-md-6 d-flex flex-column align-items-center" data-aos="fade-up" data-aos-delay="200">
+            <div class="col-xl-4 col-md-6 d-flex flex-column align-items-center" data-aos="fade-up" data-aos-delay="400">
               <div class="perbedaan-item"
                    data-img1="assets/img/Daun.jpg"
                    data-img2="assets/img/plastik.jpg"
@@ -415,7 +415,7 @@
             </div>
     
             <!-- Lingkungan Bersih vs Kotor -->
-            <div class="col-xl-4 col-md-6 d-flex flex-column align-items-center" data-aos="fade-up" data-aos-delay="300">
+            <div class="col-xl-4 col-md-6 d-flex flex-column align-items-center" data-aos="fade-up" data-aos-delay="500">
               <div class="perbedaan-item"
                    data-img1="assets/img/Code.jpg"
                    data-img2="assets/img/Tumpukan_sampah.jpeg"
@@ -434,44 +434,55 @@
     </section>
 
     <section id="data-fakta-simulasi" class="container">
-      <h1 class="section-title fade-in-left">Dampak Sampah Terhadap Lingkungan dan Bencana di Yogyakarta</h1>
+      <h1 class="section-title" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+        
+      </h1>
+
+      <div class="container section-title" data-aos="fade-up">
+        <!-- <h2 data-aos="fade-down" data-aos-duration="1000" data-aos-delay="100"></h2> -->
+        <p><span>Dampak Sampah Terhadap Lingkungan dan Bencana di Yogyakarta</span> <span class="description-title"></span></p>
+      </div>
       <div class="data-fakta">
         <ul>
-          <li><strong>Sampah sebagai Penyebab Banjir:</strong>
-              <ul>
-                  <li>Sungai Code, Gajah Wong, dan Winongo sering tersumbat sampah, menyebabkan banjir saat musim hujan.</li>
-                  <li>Tahun 2023, banjir di beberapa titik Yogyakarta dikaitkan dengan buruknya drainase akibat tumpukan sampah.</li>
-              </ul>
+          <li data-aos="fade-right" data-aos-duration="1000" data-aos-delay="300">
+            <strong>Sampah sebagai Penyebab Banjir:</strong>
+            <ul>
+              <li data-aos="fade-right" data-aos-duration="1000" data-aos-delay="400">Sungai Code, Gajah Wong, dan Winongo sering tersumbat sampah, menyebabkan banjir saat musim hujan.</li>
+              <li data-aos="fade-right" data-aos-duration="1000" data-aos-delay="500">Tahun 2023, banjir di beberapa titik Yogyakarta dikaitkan dengan buruknya drainase akibat tumpukan sampah.</li>
+            </ul>
           </li>
-          <li><strong>Ancaman Sampah Plastik terhadap Pertanian:</strong>
-              <ul>
-                  <li>Kabupaten Sleman dan Bantul mengalami penurunan kualitas tanah akibat mikroplastik dari sampah.</li>
-              </ul>
+          <li data-aos="fade-right" data-aos-duration="1000" data-aos-delay="600">
+            <strong>Ancaman Sampah Plastik terhadap Pertanian:</strong>
+            <ul>
+              <li data-aos="fade-right" data-aos-duration="1000" data-aos-delay="700">Kabupaten Sleman dan Bantul mengalami penurunan kualitas tanah akibat mikroplastik dari sampah.</li>
+            </ul>
           </li>
         </ul>
       </div>
-    
       <div class="simulasi">
-        <h2>Simulasi Interaktif: Dampak Sampah terhadap Sungai</h2>
-        <p>Klik tombol untuk menambahkan sampah. Jika terlalu banyak, kota akan tenggelam!</p>
+        <h2 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">Simulasi Interaktif: Dampak Sampah terhadap Sungai</h2>
+        <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+            Klik tombol untuk menambahkan sampah. Jika terlalu banyak, kota akan tenggelam!
+        </p>
         
-        <div id="simulasi-container" onclick="laporSampah(event)">
-          <div id="sungai"></div>
-          <div id="tembok">
-            <div id="lubang-air"></div>
-          </div>
+        <div id="simulasi-container" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="600" onclick="laporSampah(event)">
+            <div id="sungai"></div>
+            <div id="tembok">
+                <div id="lubang-air"></div>
+            </div>
         </div>
         
         <br>
-        <div id="tombol-container">
-          <button onclick="tambahSampah()">Tambah Sampah</button>
-          <button onclick="resetSimulation()">Reset Simulasi</button>
+        <div id="tombol-container" >
+            <button onclick="tambahSampah()" data-aos="fade-up-right" data-aos-duration="1000" data-aos-delay="800">Tambah Sampah</button>
+            <button onclick="resetSimulation()" data-aos="fade-up-left" data-aos-duration="1000" data-aos-delay="1000">Reset Simulasi</button>
         </div>
-      </div>
+    </div>
+    
 
       <div id="laporan-form-container">
-        <h3 id="laporan-title">Melihat sampah? Laporkan</h3>
-        <button id="toggle-form">Laporkan Sampah</button>
+        <h3 id="laporan-title" data-aos="fade-in" data-aos-duration="1000" data-aos-delay="1200">Melihat sampah? Laporkan</h3>
+        <button id="toggle-form" data-aos="zoom-in-up" data-aos-duration="1000" data-aos-delay="1200">Laporkan Sampah</button>
         <form id="laporan-form">
             <label for="nama">Nama:</label>
             <input type="text" id="nama" name="nama" required>
@@ -497,14 +508,18 @@
     </div>
     </section>
 
+
+
     <section class="education-section">
-      <h2>Yogyakarta Sebagai Pusat Pendidikan</h2>
-      <p class="subtitle">Edukasi Sampah untuk Generasi Muda</p>
+
+      <div class="container section-title" data-aos="fade-up">
+        <h2 data-aos="fade-down" data-aos-duration="1000" data-aos-delay="100">Yogyakarta Sebagai Pusat Pendidikan</h2>
+        <p><span>Edukasi Sampah</span> <span class="description-title">untuk Generasi Muda</span></p>
+      </div>
   
       <!-- Data & Fakta -->
       <div class="facts">
-          <h3>Data & Fakta:</h3>
-          <ul>
+          <ul data-aos="fade-right" data-aos-duration="1000" data-aos-delay="500">
               <li>
                   Yogyakarta adalah kota pelajar dengan lebih dari 400.00 mahasiswa dari berbagai daerah
                   <!-- <span class="tooltip" data-tooltip="Jumlah mahasiswa di Yogyakarta lebih dari 400.000">400.000</span> mahasiswa dari berbagai daerah. -->
@@ -518,9 +533,8 @@
   
       <!-- Interaktif -->
       <div class="interactive">
-          <h3>Interaktifitas dalam Edukasi</h3>
   
-          <button class="accordion">Bagaimana Integrasi ke Akademik?</button>
+          <button class="accordion" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="900">Bagaimana Integrasi ke Akademik?</button>
           <div class="panel">
               <p>Edukasi pengelolaan sampah bisa diintegrasikan dalam:</p>
               <ul>
@@ -531,7 +545,7 @@
               </ul>
           </div>
   
-          <button class="accordion">Tes Pengetahuan Singkat</button>
+          <button class="accordion" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="1000">Tes Pengetahuan Singkat</button>
           <div class="panel" id="quiz-container">
             <p id="question">Pertanyaan akan muncul di sini</p>
             <button class="quiz-btn" id="btnA">A</button>
@@ -545,7 +559,7 @@
   <!-- Modal Pop-up -->
   <div id="modal" class="modal">
       <div class="modal-content">
-          <h3>📖 Studi Kasus: Edukasi Sampah Digital</h3>
+          <h3>Studi Kasus: Edukasi Sampah Digital</h3>
           <p>Sebuah universitas di Yogyakarta sukses mengintegrasikan edukasi sampah dalam mata kuliah wajib...</p>
           <button class="close-modal" onclick="closeModal()">Tutup</button>
       </div>
@@ -627,10 +641,10 @@
               <div class="icon">
                 <i class="bi bi-recycle"></i>
               </div>
-              <a href="#" class="stretched-link">
+              <div class="service-content">
                 <h3>Pemisahan Sampah</h3>
-              </a>
-              <p>Memisahkan sampah organik dan anorganik di sumbernya untuk mempermudah proses daur ulang dan pengelolaan sampah yang lebih efisien.</p>
+                <p>Memisahkan sampah organik dan anorganik di sumbernya untuk mempermudah proses daur ulang dan pengelolaan sampah yang lebih efisien.</p>
+              </div>
             </div>
           </div><!-- End Service Item -->
     
@@ -639,10 +653,10 @@
               <div class="icon">
                 <i class="bi bi-binoculars"></i>
               </div>
-              <a href="#" class="stretched-link">
+              <div class="service-content">
                 <h3>Pengurangan Sampah</h3>
-              </a>
-              <p>Memperkenalkan teknologi dan metode untuk mengurangi volume sampah yang dihasilkan melalui daur ulang dan penggunaan ulang material.</p>
+                <p>Memperkenalkan teknologi dan metode untuk mengurangi volume sampah yang dihasilkan melalui daur ulang dan penggunaan ulang material.</p>
+              </div>
             </div>
           </div><!-- End Service Item -->
     
@@ -651,10 +665,10 @@
               <div class="icon">
                 <i class="bi bi-bag-check"></i>
               </div>
-              <a href="#" class="stretched-link">
+              <div class="service-content">
                 <h3>Solusi Daur Ulang</h3>
-              </a>
-              <p>Memfasilitasi proses daur ulang sampah plastik, kertas, dan logam dengan menyediakan fasilitas pengolahan dan mendukung kampanye pengurangan penggunaan plastik sekali pakai.</p>
+                <p>Memfasilitasi proses daur ulang sampah plastik, kertas, dan logam dengan menyediakan fasilitas pengolahan dan mendukung kampanye pengurangan penggunaan plastik sekali pakai.</p>
+              </div>
             </div>
           </div><!-- End Service Item -->
     
@@ -663,10 +677,10 @@
               <div class="icon">
                 <i class="bi bi-recycle"></i>
               </div>
-              <a href="#" class="stretched-link">
+              <div class="service-content">
                 <h3>Edukasi Masyarakat</h3>
-              </a>
-              <p>Memberikan edukasi kepada masyarakat mengenai pentingnya pengelolaan sampah yang baik dan dampaknya terhadap lingkungan.</p>
+                <p>Memberikan edukasi kepada masyarakat mengenai pentingnya pengelolaan sampah yang baik dan dampaknya terhadap lingkungan.</p>
+              </div>
             </div>
           </div><!-- End Service Item -->
     
@@ -675,10 +689,10 @@
               <div class="icon">
                 <i class="bi bi-binoculars"></i>
               </div>
-              <a href="#" class="stretched-link">
+              <div class="service-content">
                 <h3>Sistem Pengelolaan Sampah Cerdas</h3>
-              </a>
-              <p>Menggunakan teknologi IoT untuk memonitor dan mengelola tempat pembuangan sampah, memastikan pembuangan sampah yang lebih efisien dan terorganisir.</p>
+                <p>Menggunakan teknologi IoT untuk memonitor dan mengelola tempat pembuangan sampah, memastikan pembuangan sampah yang lebih efisien dan terorganisir.</p>
+              </div>
             </div>
           </div><!-- End Service Item -->
     
@@ -687,10 +701,10 @@
               <div class="icon">
                 <i class="bi bi-trash"></i>
               </div>
-              <a href="#" class="stretched-link">
+              <div class="service-content">
                 <h3>Wadah Sampah Terintegrasi</h3>
-              </a>
-              <p>Menawarkan solusi tempat sampah terintegrasi yang dilengkapi dengan sistem pengumpul sampah otomatis dan pemberitahuan pengumpulan sampah kepada petugas pengelola.</p>
+                <p>Menawarkan solusi tempat sampah terintegrasi yang dilengkapi dengan sistem pengumpul sampah otomatis dan pemberitahuan pengumpulan sampah kepada petugas pengelola.</p>
+              </div>
             </div>
           </div><!-- End Service Item -->
     
@@ -700,7 +714,6 @@
     
     </section>
     
-
 
   </main>
 

@@ -1128,6 +1128,8 @@ section,
 .text-container {
   flex: 1;
   max-width: 50%;
+  padding: 30px;
+  margin: 50px;
 }
 
 .text-container h2 {
@@ -1354,7 +1356,6 @@ section,
   content: "•";
   position: absolute;
   left: 0;
-  color: #28a745;
   font-weight: bold;
 }
 
@@ -1429,7 +1430,7 @@ section,
   0% { transform: translateY(0px); }
   100% { transform: translateY(-10px); }
 }
-
+/* 
 @keyframes slideInLeft {
   from {
     opacity: 0;
@@ -1450,15 +1451,7 @@ section,
     opacity: 1;
     transform: translateX(0);
   }
-}
-
-.fade-in-left {
-  animation: slideInLeft 1s ease-out forwards;
-}
-
-.fade-in-right {
-  animation: slideInRight 1s ease-out forwards;
-}
+} */
 
 
 button {
@@ -1543,6 +1536,38 @@ button:nth-child(2) { background-color: #007bff; color: white; }
 #yogyakarta-info .fade-in-title {
   animation: fadeIn 1s ease-out forwards;
 }
+
+@keyframes fadeInAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeInAnimation 1s ease-out forwards;
+}
+
+@keyframes slideUpAnimation {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-up {
+  opacity: 0;
+  animation: slideUpAnimation 1s ease-out forwards;
+}
+
+
+
 
 /* Form */
 #laporan-form-container {
@@ -1915,6 +1940,8 @@ h2 {
 .perbedaan {
   padding: 50px 0;
   background-color: #f9f9f9;
+  margin: 50px;
+  padding: 30px;
 }
 
 /* Judul section */
