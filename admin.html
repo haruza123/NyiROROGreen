@@ -13,7 +13,7 @@
         <h2>📌 Daftar Laporan Masuk</h2>
         
         <!-- 🔍 Pencarian -->
-        <input type="text" id="search-box" placeholder="🔍 Cari berdasarkan nama atau lokasi..." oninput="filterLaporan()">
+        <input type="text" id="search-box" placeholder="Cari berdasarkan nama atau lokasi..." oninput="filterLaporan()">
 
         <button onclick="loadLaporan()">🔄 Muat Ulang</button>
         <div id="laporan-list"></div>
@@ -27,7 +27,7 @@
 
         onAuthStateChanged(auth, (user) => {
             if (!user) {
-                window.location.href = "login.html"; 
+                window.location.href = "index.html"; 
             }
         });
 

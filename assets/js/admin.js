@@ -38,35 +38,52 @@ import {
       laporanList.innerHTML = "";
       snapshot.forEach((doc) => {
         let laporan = doc.data() || {}; 
-
+  
         let nama = laporan.nama ? laporan.nama : "Tanpa Nama";
         let lokasi = laporan.lokasi ? laporan.lokasi : "Tanpa Lokasi";
         let deskripsi = laporan.deskripsi ? laporan.deskripsi : "Tidak ada deskripsi";
         let tanggal = laporan.timestamp ? new Date(laporan.timestamp.seconds * 1000).toLocaleString("id-ID") : "Tidak tersedia";
         let status = laporan.status ? "✅ Ditindaklanjuti" : "⏳ Belum Ditindaklanjuti";
-
+  
         let laporanItem = document.createElement("div");
         laporanItem.classList.add("laporan-item");
-
+  
         laporanItem.setAttribute("data-nama", nama.toLowerCase());
         laporanItem.setAttribute("data-lokasi", lokasi.toLowerCase());
   
-        laporanItem.innerHTML = `
-            <p><strong>Nama:</strong> ${nama}</p>
-            <p><strong>Lokasi:</strong> ${lokasi}</p>
-            <p><strong>Deskripsi:</strong> ${laporan.deskripsi ? laporan.deskripsi : "Tidak ada deskripsi"}</p>
-            <p><strong>Tanggal:</strong> ${tanggal}</p>
-            ${laporan.fotoUrl ? `<img src="${laporan.fotoUrl}" alt="Foto Laporan" width="200">` : ""}
-            <p><strong>Status:</strong> ${laporan.status ? "✅ Ditindaklanjuti" : "⏳ Belum Ditindaklanjuti"}</p>
-            <button onclick="hapusLaporan('${doc.id}')">🗑️ Hapus</button>
-            ${!laporan.status ? `<button onclick="tandaiSelesai('${doc.id}')">✅ Tandai Selesai</button>` : ""}
-            <hr>
+        let textContainer = document.createElement("div");
+        textContainer.classList.add("data");
+        textContainer.innerHTML = `
+          <p><strong>Nama:</strong> ${nama}</p>
+          <p><strong>Lokasi:</strong> ${lokasi}</p>
+          <p><strong>Deskripsi:</strong> ${laporan.deskripsi ? laporan.deskripsi : "Tidak ada deskripsi"}</p>
+          <p><strong>Tanggal:</strong> ${tanggal}</p>
+          <p><strong>Status:</strong> ${laporan.status ? "✅ Ditindaklanjuti" : "⏳ Belum Ditindaklanjuti"}</p>
         `;
+  
+        let btnContainer = document.createElement("div");
+        btnContainer.classList.add("btn-action");
+        btnContainer.innerHTML = `
+          <button onclick="hapusLaporan('${doc.id}')">🗑️ Hapus</button>
+          ${!laporan.status ? `<button onclick="tandaiSelesai('${doc.id}')">✅ Tandai Selesai</button>` : ""}
+        `;
+  
+        let imageContainer = document.createElement("div");
+        imageContainer.classList.add("image");
+  
+        if (laporan.fotoUrl) {
+          imageContainer.innerHTML = `<img src="${laporan.fotoUrl}" alt="Foto Laporan"">`;
+        }
+
+        laporanItem.appendChild(textContainer);
+        laporanItem.appendChild(imageContainer);
+        laporanItem.appendChild(btnContainer); 
         laporanList.appendChild(laporanItem);
       });
     });
-  }
-  
+}
+
+
   async function hapusLaporan(id) {
     if (confirm("Apakah Anda yakin ingin menghapus laporan ini?")) {
       try {

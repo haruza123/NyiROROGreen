@@ -6,7 +6,7 @@ document.getElementById("login-btn").addEventListener("click", async () => {
 
     try {
         await loginAdmin(email, password);
-        window.location.href = "index.html";
+        window.location.href = "admin.html";
     } catch (error) {
         alert("Login gagal: " + error.message);
     }
