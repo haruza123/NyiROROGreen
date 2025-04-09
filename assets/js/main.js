@@ -136,6 +136,50 @@
     });
   });
 
+
+  //Animasi angka
+  document.addEventListener("DOMContentLoaded", function () {
+    const counters = document.querySelectorAll('.count');
+    const speed = 50;
+  
+    const runCounter = (counter) => {
+      const target = +counter.getAttribute('data-target');
+      const count = +counter.innerText.replace(/\./g, '');
+      const increment = target / speed;
+  
+      const updateCount = () => {
+        const current = +counter.innerText.replace(/\./g, '');
+        if (current < target) {
+          const newCount = Math.ceil(current + increment);
+          counter.innerText = newCount.toLocaleString('id-ID');
+          setTimeout(updateCount, 15);
+        } else {
+          counter.innerText = target.toLocaleString('id-ID');
+        }
+      };
+  
+      updateCount();
+    };
+  
+    // ✅ Pakai Intersection Observer
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          runCounter(entry.target);
+          obs.unobserve(entry.target); // hanya jalankan sekali
+        }
+      });
+    }, {
+      threshold: 0.6 // 60% elemen terlihat baru dijalankan
+    });
+  
+    counters.forEach(counter => {
+      observer.observe(counter);
+    });
+  });
+  
+  
+
   /*Story animation */
   document.addEventListener("DOMContentLoaded", function () {
     let stories = document.querySelectorAll(".story");

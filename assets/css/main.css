@@ -2216,6 +2216,9 @@ h2 {
   padding: 80px 20px;
   transition: border ease-in-out 0.3s;
   height: 100%;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
 }
 
 .services .service-item .icon {
@@ -2249,13 +2252,23 @@ h2 {
   font-size: 14px;
   margin-bottom: 0;
 }
-
-.services .service-item:hover {
-  border-color: var(--accent-color);
+.services .service-item::before {
+  content: "";
+  position: absolute;
+  inset: 100% 0 0 0;
+  background: var(--accent-color);
+  transition: all 0.3s ease-in-out;
+  z-index: -1;
 }
 
-.services .service-item:hover h3 {
-  color: var(--accent-color);
+.services .service-item:hover::before {
+  inset: 0;
+}
+
+.services .service-item:hover h3,
+.services .service-item:hover p,
+.services .service-item:hover i {
+  color: var(--contrast-color);
 }
 
 /*--------------------------------------------------------------
