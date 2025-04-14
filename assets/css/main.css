@@ -230,6 +230,16 @@ h6 {
   overflow: hidden;
 }
 
+.header .topbar .social-links img,
+.header .topbar .logo-link img {
+  max-height: 24px;   
+  height: auto;
+  width: auto;
+  object-fit: contain;
+  vertical-align: middle;
+}
+
+
 /*--------------------------------------------------------------
 # Navigation Menu
 --------------------------------------------------------------*/
@@ -624,6 +634,26 @@ h6 {
   margin-top: 6px;
   font-size: 13px;
 }
+
+.footer-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; 
+  flex-wrap: wrap; 
+  padding: 20px 0;
+}
+
+.footer-logo-link img {
+  max-height: 60px;
+  filter: grayscale(100%);
+  transition: filter 0.3s ease;
+}
+
+.footer-logo-link img:hover {
+  filter: grayscale(0%);
+}
+
 
 /*--------------------------------------------------------------
 # Preloader
@@ -1728,6 +1758,20 @@ button:nth-child(2) { background-color: #007bff; color: white; }
   }
 }
 
+[data-eos] {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+[data-eos].eos-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-peta h2 {
+  font-size: 2rem; 
+  text-align: center; 
+}
 
 
 

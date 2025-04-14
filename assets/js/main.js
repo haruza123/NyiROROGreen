@@ -179,7 +179,21 @@
   });
  
 
-
+  function eosAnimate() {
+    const elements = document.querySelectorAll('[data-eos]');
+    const triggerBottom = window.innerHeight * 0.9;
+  
+    elements.forEach(el => {
+      const top = el.getBoundingClientRect().top;
+      if (top < triggerBottom) {
+        el.classList.add('eos-visible');
+      }
+    });
+  }
+  
+  window.addEventListener('scroll', eosAnimate);
+  window.addEventListener('load', eosAnimate);
+  
 
 
   /**

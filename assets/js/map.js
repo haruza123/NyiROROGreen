@@ -182,35 +182,76 @@ const geojsonData = {
   
 
 // Tambahkan GeoJSON ke peta
-let geojsonLayer = L.geoJSON(geojsonData, {
-  style: function (feature) {
-    return {
-      fillColor: feature.properties.color || "#90e0ef",
-      weight: 1,
-      color: "white",
-      fillOpacity: 0.7
-    };
-  },
-  onEachFeature: function (feature, layer) {
-    const nama = feature.properties.name;
-    const data = dataSampah[nama];
-    if (data) {
-      const info = `
-        <strong>${nama}</strong><br>
-        Organik: ${data.organik} kg<br>
-        Plastik: ${data.plastik} kg<br>
-        Residu: ${data.residu} kg
-      `;
-      layer.bindTooltip(info, { sticky: true });
-    }
+// let geojsonLayer = L.geoJSON(geojsonData, {
+//   style: function (feature) {
+//     return {
+//       fillColor: feature.properties.color || "#90e0ef",
+//       weight: 1,
+//       color: "white",
+//       fillOpacity: 0.7
+//     };
+//   },
+//   onEachFeature: function (feature, layer) {
+//     const nama = feature.properties.name;
+//     const data = dataSampah[nama];
+//     if (data) {
+//       const info = `
+//         <strong>${nama}</strong><br>
+//         Organik: ${data.organik} kg<br>
+//         Plastik: ${data.plastik} kg<br>
+//         Residu: ${data.residu} kg
+//       `;
+//       layer.bindTooltip(info, { sticky: true });
+//     }
 
-    layer.on({
-      mouseover: function (e) {
-        e.target.setStyle({ fillOpacity: 1 });
+//     layer.on({
+//       mouseover: function (e) {
+//         e.target.setStyle({ fillOpacity: 1 });
+//       },
+//       mouseout: function (e) {
+//         geojsonLayer.resetStyle(e.target);
+//       }
+//     });
+//   }
+// }).addTo(map);
+
+let geojsonLayer = L.featureGroup().addTo(map); // kumpulan semua layer
+
+geojsonData.features.forEach((feature, i) => {
+  setTimeout(() => {
+    const layer = L.geoJSON(feature, {
+      style: function (feature) {
+        return {
+          fillColor: feature.properties.color || "#90e0ef",
+          weight: 1,
+          color: "white",
+          fillOpacity: 0.7
+        };
       },
-      mouseout: function (e) {
-        geojsonLayer.resetStyle(e.target);
+      onEachFeature: function (feature, layer) {
+        const nama = feature.properties.name;
+        const data = dataSampah[nama];
+        if (data) {
+          const info = `
+            <strong>${nama}</strong><br>
+            Organik: ${data.organik} kg<br>
+            Plastik: ${data.plastik} kg<br>
+            Residu: ${data.residu} kg
+          `;
+          layer.bindTooltip(info, { sticky: true });
+        }
+
+        layer.on({
+          mouseover: function (e) {
+            e.target.setStyle({ fillOpacity: 1 });
+          },
+          mouseout: function (e) {
+            geojsonLayer.resetStyle(e.target);
+          }
+        });
       }
     });
-  }
-}).addTo(map);
+    layer.addTo(geojsonLayer); // tambahkan layer ke featureGroup
+  }, i * 200); // delay tiap kecamatan 200ms
+});
+
