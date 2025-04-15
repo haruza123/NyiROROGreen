@@ -246,7 +246,7 @@ geojsonData.features.forEach((feature, i) => {
             e.target.setStyle({ fillOpacity: 1 });
           },
           mouseout: function (e) {
-            geojsonLayer.resetStyle(e.target);
+            e.target.setStyle({ fillOpacity: 0.7 });
           }
         });
       }

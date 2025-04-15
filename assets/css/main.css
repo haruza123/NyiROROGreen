@@ -1213,6 +1213,9 @@ section,
   }
 }
 
+.section-peta h2 {
+  text-align: center;
+}
 /*--------------------------------------------------------------
 # About Section
 --------------------------------------------------------------*/
@@ -1657,6 +1660,11 @@ section,
 # Team Section
 --------------------------------------------------------------*/
 .team .team-member {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  min-height: 100%;
   background-color: var(--surface-color);
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -1664,6 +1672,7 @@ section,
 }
 
 .team .team-member .member-img {
+  height: 320px;
   position: relative;
   overflow: hidden;
 }
@@ -1733,6 +1742,12 @@ section,
 .team .team-member:hover .social {
   opacity: 1;
 }
+
+.team .row {
+  justify-content: center;
+}
+
+
 
 /*--------------------------------------------------------------
 # Pricing Section
