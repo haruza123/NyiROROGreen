@@ -857,7 +857,7 @@ section,
   color: var(--heading-color);
   margin: 10px 0 0 0;
   font-size: 32px;
-  font-weight: 700;
+  font-weight: 500;
   font-family: var(--heading-font);
 }
 
@@ -997,15 +997,26 @@ section,
 
 .section-title span {
   display: block;
-  font-size: 28px;
-  font-weight: 600;
+  font-size: 36px;
+  font-weight: 700;
 }
 
 .section-title .description-title {
-  font-size: 32px;
-  font-weight: 600;
+  font-size: 40px;
+  font-weight: 700;
   color: #3ea856; 
 }
+
+.inline-title span {
+  display: inline;
+}
+
+.inline-title .description-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: #3ea856;
+}
+
 
 /* Paragraf penjelasan */
 .section-text {
@@ -1432,6 +1443,14 @@ section,
 .services .service-item:hover p,
 .services .service-item:hover i {
   color: var(--contrast-color);
+}
+
+.services .service-item:hover .icon {
+  background: var(--contrast-color); 
+}
+
+.services .service-item:hover .icon i {
+  color: var(--accent-color);
 }
 
 /*--------------------------------------------------------------
