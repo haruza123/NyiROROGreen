@@ -200,19 +200,36 @@ document.addEventListener("DOMContentLoaded", function () {
   const musicBtn = document.getElementById("musicBtn");
   const musicIcon = document.getElementById("musicIcon");
 
-  // Mulai musik hanya setelah interaksi user (wajib untuk autoplay audio)
-  function enableAudio() {
-    music.play().then(() => {
-      console.log("Music started");
-    }).catch(err => {
-      console.warn("Autoplay blocked:", err);
-    });
-    document.removeEventListener("click", enableAudio);
-  }
+  let musicStarted = false;
 
-  document.addEventListener("click", enableAudio);
+  const tryPlayMusic = () => {
+    if (!musicStarted) {
+      music.play().then(() => {
+        musicStarted = true;
+        console.log("Musik dimulai setelah interaksi");
+        removeInteractionListeners();
+      }).catch(err => {
+        console.warn("Autoplay masih diblokir:", err);
+      });
+    }
+  };
 
-  musicBtn.addEventListener("click", () => {
+  const removeInteractionListeners = () => {
+    document.removeEventListener("click", tryPlayMusic);
+    document.removeEventListener("scroll", tryPlayMusic);
+    document.removeEventListener("wheel", tryPlayMusic);
+    document.removeEventListener("touchstart", tryPlayMusic);
+  };
+
+  // Dengarkan berbagai interaksi
+  document.addEventListener("click", tryPlayMusic);
+  document.addEventListener("scroll", tryPlayMusic);
+  document.addEventListener("wheel", tryPlayMusic);     // mouse scroll
+  document.addEventListener("touchstart", tryPlayMusic); // untuk HP
+
+  // Tombol manual untuk play/pause
+  musicBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
     if (music.paused) {
       music.play();
       musicIcon.classList.remove("bi-play-fill");
