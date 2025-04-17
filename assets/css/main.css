@@ -240,6 +240,7 @@ h6 {
 }
 
 
+
 /*--------------------------------------------------------------
 # Navigation Menu
 --------------------------------------------------------------*/
@@ -764,6 +765,33 @@ h6 {
   visibility: visible;
   opacity: 1;
 }
+
+.music-btn {
+  position: fixed;
+  left: 15px;               /* posisi di kiri */
+  bottom: 15px;
+  z-index: 99999;
+  background-color: var(--accent-color);
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  transition: all 0.4s;
+  visibility: visible;      /* langsung kelihatan */
+  opacity: 1;
+  border: none;
+}
+
+.music-btn i {
+  font-size: 24px;
+  color: var(--contrast-color);
+  line-height: 0;
+}
+
+.music-btn:hover {
+  background-color: color-mix(in srgb, var(--accent-color), transparent 20%);
+  color: var(--contrast-color);
+}
+
 
 /*--------------------------------------------------------------
 # Disable aos animation delay on mobile devices

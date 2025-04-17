@@ -194,7 +194,36 @@
   window.addEventListener('scroll', eosAnimate);
   window.addEventListener('load', eosAnimate);
   
+//MUSIK
+document.addEventListener("DOMContentLoaded", function () {
+  const music = document.getElementById("bgMusic");
+  const musicBtn = document.getElementById("musicBtn");
+  const musicIcon = document.getElementById("musicIcon");
 
+  // Mulai musik hanya setelah interaksi user (wajib untuk autoplay audio)
+  function enableAudio() {
+    music.play().then(() => {
+      console.log("Music started");
+    }).catch(err => {
+      console.warn("Autoplay blocked:", err);
+    });
+    document.removeEventListener("click", enableAudio);
+  }
+
+  document.addEventListener("click", enableAudio);
+
+  musicBtn.addEventListener("click", () => {
+    if (music.paused) {
+      music.play();
+      musicIcon.classList.remove("bi-play-fill");
+      musicIcon.classList.add("bi-pause-fill");
+    } else {
+      music.pause();
+      musicIcon.classList.remove("bi-pause-fill");
+      musicIcon.classList.add("bi-play-fill");
+    }
+  });
+});
 
   /**
    * Initiate Pure Counter
