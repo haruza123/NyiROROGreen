@@ -204,12 +204,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const tryPlayMusic = () => {
     if (!musicStarted) {
+      music.muted = false; // <=== Ini penting
       music.play().then(() => {
         musicStarted = true;
-        console.log("Musik dimulai setelah interaksi");
+        console.log("Musik dinyalakan dan di-unmute");
         removeInteractionListeners();
       }).catch(err => {
-        console.warn("Autoplay masih diblokir:", err);
+        console.warn("Autoplay tetap diblokir:", err);
       });
     }
   };
@@ -221,13 +222,13 @@ document.addEventListener("DOMContentLoaded", function () {
     document.removeEventListener("touchstart", tryPlayMusic);
   };
 
-  // Dengarkan berbagai interaksi
+  // Dengarkan berbagai interaksi awal
   document.addEventListener("click", tryPlayMusic);
   document.addEventListener("scroll", tryPlayMusic);
-  document.addEventListener("wheel", tryPlayMusic);     // mouse scroll
-  document.addEventListener("touchstart", tryPlayMusic); // untuk HP
+  document.addEventListener("wheel", tryPlayMusic);
+  document.addEventListener("touchstart", tryPlayMusic);
 
-  // Tombol manual untuk play/pause
+  // Tombol play/pause
   musicBtn.addEventListener("click", (e) => {
     e.stopPropagation();
     if (music.paused) {
@@ -241,6 +242,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+
 
   /**
    * Initiate Pure Counter
