@@ -1080,6 +1080,56 @@ section,
   z-index: -1;
 }
 
+/* Default state, dengan gambar latar belakang */
+.featured-services .service-item.box1:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('../img/Container/Barier.png') center center / cover no-repeat;
+  opacity: 0;
+  inset: 100% 0 0 0;
+  transition: all 0.3s ease-in-out;
+  z-index: -1;
+}
+
+.featured-services .service-item.box2:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('../img/Container/Barier_Rusak.png') center center / cover no-repeat;
+  opacity: 0;
+  inset: 100% 0 0 0;
+  transition: all 0.3s ease-in-out;
+  z-index: -1;
+}
+
+.featured-services .service-item.box3:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('../img/Container/Hujan.png') center center / cover no-repeat;
+  opacity: 0;
+  inset: 100% 0 0 0;
+  transition: all 0.3s ease-in-out;
+  z-index: -1;
+}
+
+.featured-services .service-item.box4:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('../img/Container/Edukasi1.png') center center / cover no-repeat;
+  opacity: 0;
+  inset: 100% 0 0 0;
+  transition: all 0.3s ease-in-out;
+  z-index: -1;
+}
+
+/* Saat hover, munculkan background gambarnya */
+.featured-services .service-item:hover:before {
+  opacity: 1;
+}
+
 .featured-services .service-item .icon {
   margin-bottom: 10px;
 }
@@ -1112,12 +1162,12 @@ section,
 
 .featured-services .service-item:hover h4 a,
 .featured-services .service-item:hover .icon i,
+.featured-services .service-item:hover h4,
 .featured-services .service-item:hover p {
   color: var(--contrast-color);
 }
 
 .featured-services .service-item:hover:before {
-  background: var(--accent-color);
   inset: 0;
   border-radius: 0px;
 }
